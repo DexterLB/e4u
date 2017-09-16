@@ -5,7 +5,7 @@
 # Date:        2011/03/24
 #
 from urllib.request import urlopen
-from BeautifulSoup import BeautifulStoneSoup
+from bs4 import BeautifulSoup
 
 from .utils import create_regex_patterns, create_translate_dictionaries 
 from .symbol import Symbol
@@ -19,7 +19,7 @@ class Loader(object):
     
     
     def _load(self, xml):
-        soup = BeautifulStoneSoup(xml)('e')
+        soup = BeautifulSoup(xml, 'xml')('e')
         symbols = []
         symbol_dictionary = {}
         for e in soup:
