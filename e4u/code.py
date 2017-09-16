@@ -7,8 +7,8 @@
 # Ref: https://bitbucket.org/tokibito/django-bpmobile/src/7a09b1dea05c/bpmobile/utils.py
 # Ref: http://code.google.com/p/emoji4unicode/source/browse/trunk/src/carrier_data.py
 #
-from utils import code_to_unicode, code_to_sjis, get_range_from_code
-from thumbnails import get_docomo_thumbnail_urls, get_kddi_thumbnail_urls, get_softbank_thumbnail_urls
+from .utils import code_to_unicode, code_to_sjis, get_range_from_code
+from .thumbnails import get_docomo_thumbnail_urls, get_kddi_thumbnail_urls, get_softbank_thumbnail_urls
 
 class Code(object):
     _name = None
@@ -28,11 +28,11 @@ class Code(object):
             self._unicode = None
         self._fallback = fallback
     def __unicode__(self):
-        return self.unicode
+        return self.str
     keyable = property(lambda self: self.code and not self.duplicate)
     duplicate = property(lambda self: self._duplicate)
     code = property(lambda self: self._code)
-    unicode = property(lambda self: self._unicode or self.fallback)
+    str = property(lambda self: self._unicode or self.fallback)
     fallback = property(lambda self: self._fallback)
 
 class Carrier(Code):
@@ -71,7 +71,7 @@ class Carrier(Code):
         results = []
         for url in urls:
             results.append(img % (url, fallback, fallback))
-        return u''.join(results)
+        return ''.join(results)
     thumbnail = property(_get_thumbnail_img)
     
 class Unicode(Code):

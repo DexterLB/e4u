@@ -4,11 +4,11 @@
 # Author:    alisue
 # Date:        2011/03/24
 #
-from urllib import urlopen
+from urllib.request import urlopen
 from BeautifulSoup import BeautifulStoneSoup
 
-from utils import create_regex_patterns, create_translate_dictionaries 
-from symbol import Symbol
+from .utils import create_regex_patterns, create_translate_dictionaries 
+from .symbol import Symbol
 
 class Loader(object):
     # Properties

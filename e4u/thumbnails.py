@@ -4,7 +4,7 @@
 # Author:    alisue
 # Date:        2011/03/25
 #
-from utils import get_range_from_code
+from .utils import get_range_from_code
 
 def get_stored_thumbnail_urls(carrier, base_url=r"/image/emoji/%s/%s.gif"):
     if not carrier.code:
@@ -54,7 +54,7 @@ _code_to_sjis_code_ranges = (
     (0xE501, 0xE53E, 0xFBA1, 0xFBDE),
 )
 # SoftBank may refuse access image from external so the code below may not work.
-def get_softbank_thumbnail_urls(softbank, base_url = u"http://creation.mb.softbank.jp/web/img/%04X/%04X_20.gif"):
+def get_softbank_thumbnail_urls(softbank, base_url = "http://creation.mb.softbank.jp/web/img/%04X/%04X_20.gif"):
     if not softbank.code:
         return None
     urls = []
